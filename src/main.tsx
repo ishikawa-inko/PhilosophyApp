@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Index from '@/pages/index.tsx';
+import TestGemini from './pages/TestGemini.tsx'; // ← ここを追加
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     element: <Index />,
     errorElement: <div>404 Not Found</div>
   },
+  {
+    path: "/test",          // ← ★ ここが /test で表示されるルート
+    element: <TestGemini /> // ← 表示したいコンポーネント
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
