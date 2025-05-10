@@ -1,27 +1,42 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import Index from '@/pages/index.tsx';
-import TestGemini from './pages/TestGemini.tsx'; // ← ここを追加
+import Home from './pages/Home.tsx';
+import Input from './pages/Input.tsx';
+import Chat from './pages/Chat.tsx';
+import Answer from './pages/Answer.tsx';
+import TestGemini from './pages/TestGemini.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Index />,
-    errorElement: <div>404 Not Found</div>
+    path: '/',
+    element: <Home />,
+    errorElement: <div>404 Not Found</div>,
   },
   {
-    path: "/test",          // ← ★ ここが /test で表示されるルート
-    element: <TestGemini /> // ← 表示したいコンポーネント
-  }
+    path: '/input',
+    element: <Input />,
+  },
+  {
+    path: '/chat',
+    element: <Chat />,
+  },
+  {
+    path: '/answer',
+    element: <Answer />,
+  },
+  {
+    path: '/test',
+    element: <TestGemini />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
-)
+);
