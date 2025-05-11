@@ -37,3 +37,23 @@
   cursor: pointer;
   text-align: right;
 }
+.philosopher-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-item {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-item input {
+  margin-right: 0.5rem;
+}

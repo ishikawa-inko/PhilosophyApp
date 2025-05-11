@@ -9,7 +9,6 @@ import Home from './pages/Home.tsx';
 import Input from './pages/Input.tsx';
 import Chat from './pages/Chat.tsx';
 import Answer from './pages/Answer.tsx';
-import TestGemini from './pages/TestGemini.tsx';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +27,6 @@ const router = createBrowserRouter([
   {
     path: '/answer',
     element: <Answer />,
-  },
-  {
-    path: '/test',
-    element: <TestGemini />,
   },
 ]);
 
