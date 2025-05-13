@@ -1,4 +1,4 @@
-import './Home.css'; // 相対パスで読み込む
+import '../styles/Home.css'; // 相対パスで読み込む
 
 export default function Home() {
   return (

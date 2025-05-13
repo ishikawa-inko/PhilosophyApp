@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Input.css';
+import '../styles/Input.css';
 
 export default function Input() {
   const navigate = useNavigate();

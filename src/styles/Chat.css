@@ -1,0 +1,66 @@
+/* Chat.css */
+
+.chat-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.philosopher {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  background-color: #f1f1f1;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  max-width: 75%;
+  white-space: pre-wrap;
+}
+
+.message.user .message-bubble {
+  background-color: #d0f0ff;
+  border-bottom-right-radius: 0;
+}
+
+.message.philosopher .message-bubble {
+  background-color: #fff;
+  border-bottom-left-radius: 0;
+}
+
+/* OpinionSelector用 */
+.opinion-box {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.opinion-box h4 {
+  margin: 1rem 0 0.5rem;
+}
+
+.opinion-box textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.opinion-box button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
