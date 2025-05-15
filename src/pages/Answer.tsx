@@ -22,7 +22,6 @@ export default function Answer() {
 
   // アドバイス文、解決策、元の返答
   const advice = philosopherAdviceMap[philosopher] || '考え続けることが大事だよ。';
-  const adviceText = localStorage.getItem('finalAdviceText') || '';
   const solution = localStorage.getItem('finalSolution') || '';
 
   return (
