@@ -13,7 +13,6 @@ export default function Input() {
     "不安・ストレス",
     "努力と目標"
   ];
-
   const templates: { [key: string]: string[] } = {
     "人間関係": ["友達とうまくいかない", "教授が怖い", "みんなと仲良くなれない"],
     "将来・キャリア": ["やりたい仕事が見つからない", "将来が不安", "進路が決められない"],
@@ -23,31 +22,32 @@ export default function Input() {
     "努力と目標": ["目標を立てても続かない", "努力が報われない気がする", "サボってしまう自分が嫌"]
   };
 
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedExample, setSelectedExample] = useState<string | null>(null);
-  const [customInput, setCustomInput] = useState('');
-  const [selectedPhilosophers, setSelectedPhilosophers] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null); // 選択されたジャンル
+  const [selectedExample, setSelectedExample] = useState<string | null>(null); // 選択された例
+  const [customInput, setCustomInput] = useState(''); // 自由入力欄の内容
+  const [selectedPhilosophers, setSelectedPhilosophers] = useState<string[]>([]); // 選択された哲学者
 
+  // 送信ボタンの処理の関数
   const handleSubmit = () => {
-    const allConcerns = [];
-    if (selectedExample) allConcerns.push(selectedExample);
-    if (customInput.trim()) allConcerns.push(customInput.trim());
+    const allConcerns = []; // 選択された悩みを格納する配列
+    if (selectedExample) allConcerns.push(selectedExample); // 選択された例を追加
+    if (customInput.trim()) allConcerns.push(customInput.trim()); // 自由入力欄の内容を追加
 
+    //入力漏れ時のアラート
     if (allConcerns.length === 0) {
       alert('悩みを1つ以上選択または記入してください。');
       return;
     }
-
     if (selectedPhilosophers.length === 0) {
       alert('哲学者を1人以上選んでください。');
       return;
     }
 
-    const concernText = allConcerns.join('、');
-    localStorage.setItem('userConcern', concernText);
-    localStorage.setItem('selectedPhilosophers', JSON.stringify(selectedPhilosophers));
+    const concernText = allConcerns.join('、'); // 選択された悩みを、区切りで結合
+    localStorage.setItem('userConcern', concernText);  // ユーザーの悩みをlocalStorageに保存
+    localStorage.setItem('selectedPhilosophers', JSON.stringify(selectedPhilosophers)); // 選択された哲学者をlocalStorageに保存
 
-    navigate('/chat');
+    navigate('/chat');// チャット画面に遷移
   };
 
   return (
@@ -58,10 +58,10 @@ export default function Input() {
       <div style={{ marginBottom: '1rem' }}>
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setSelectedExample(null);
+            key={cat} 
+            onClick={() => {  
+              setSelectedCategory(cat);  // 選択されたジャンルをセット
+              setSelectedExample(null); // 選択された例をリセット
             }}
             className={`category-button ${selectedCategory === cat ? 'selected' : ''}`}
           >
