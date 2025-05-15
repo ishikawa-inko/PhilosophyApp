@@ -38,6 +38,7 @@ export function usePhilosopherChat() {
     setLoading(true);
 
     try {
+      // 最初の哲学者の返答
       const res = await fetch('http://localhost:8000/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,11 +46,13 @@ export function usePhilosopherChat() {
       });
       const data = await res.json();
       const firstReply = data.candidates?.[0]?.content?.parts?.[0]?.text || '返答が取得できませんでした。';
-      setChatLog(prev => [...prev, { sender: selectedPhilosopher, text: firstReply }]);
-      setResponses(prev => [...prev, { name: selectedPhilosopher, text: firstReply }]);
+      const cleanedFirst = firstReply.replace('{{concern}}', concern);
+      setChatLog(prev => [...prev, { sender: selectedPhilosopher, text: cleanedFirst }]);
+      setResponses(prev => [...prev, { name: selectedPhilosopher, text: cleanedFirst }]);
 
+      // 他の哲学者たちの返答
       for (const p of otherPrompts) {
-        const prompt = p.prompt.replace('{{firstReply}}', firstReply);
+        const prompt = p.prompt.replace('{{firstReply}}', cleanedFirst);
         const res = await fetch('http://localhost:8000/gemini', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -57,8 +60,9 @@ export function usePhilosopherChat() {
         });
         const data = await res.json();
         const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '返答が取得できませんでした。';
-        setChatLog(prev => [...prev, { sender: p.name, text }]);
-        setResponses(prev => [...prev, { name: p.name, text }]);
+        const cleanedText = text.replace('{{concern}}', concern);
+        setChatLog(prev => [...prev, { sender: p.name, text: cleanedText }]);
+        setResponses(prev => [...prev, { name: p.name, text: cleanedText }]);
         await new Promise(r => setTimeout(r, 500));
       }
 
@@ -86,6 +90,18 @@ export function usePhilosopherChat() {
       text: `【${loopCount}回目】私は「${selected}」の意見に共感しました。\n自分の考え：${comment}`
     }]);
 
+    localStorage.setItem('finalPhilosopher', selected); // ← Answer.tsx用
+    const adviceMap: Record<string, string> = {
+      ソクラテス: '無知の自覚こそ、知のはじまりじゃ。',
+      ニーチェ: 'お前が地獄を見てきたなら、それは力になる。',
+      カント: '理性によって道を切り開け。',
+      ベンサム: '幸せが最大になる道を選べばいいんだよ！',
+      エピクロス: '無理しないで、肩の力抜いて、ぼちぼちいこうよ。',
+      サルトル: '人間は自分で意味を作る自由に投げ込まれている。',
+      老子: '流れに身を任せるのも道だよ〜。',
+    };
+    localStorage.setItem('finalAdvice', adviceMap[selected] || '');
+
     const target = responses.find(r => r.name === selected);
     if (!target) return;
 
@@ -99,7 +115,8 @@ export function usePhilosopherChat() {
     });
     const data = await res.json();
     const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || '返答が取得できませんでした。';
-    setChatLog(prev => [...prev, { sender: target.name, text: reply }]);
+    const cleanedReply = reply.replace('{{concern}}', concern);
+    setChatLog(prev => [...prev, { sender: target.name, text: cleanedReply }]);
 
     for (const r of responses.filter(r => r.name !== selected)) {
       const base = (philosopherPrompts[r.name] || '').replace('{{concern}}', concern);
@@ -113,7 +130,8 @@ export function usePhilosopherChat() {
         });
         const data = await res.json();
         const counter = data.candidates?.[0]?.content?.parts?.[0]?.text || '反論が取得できませんでした。';
-        setChatLog(prev => [...prev, { sender: r.name, text: counter }]);
+        const cleanedCounter = counter.replace('{{concern}}', concern);
+        setChatLog(prev => [...prev, { sender: r.name, text: cleanedCounter }]);
         await new Promise(r => setTimeout(r, 500));
       } catch {
         setChatLog(prev => [...prev, { sender: r.name, text: '反論中にエラーが発生しました。' }]);

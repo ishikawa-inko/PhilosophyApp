@@ -1,66 +1,64 @@
-/* Chat.css */
-
+/* チャット画面全体 */
 .chat-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
   font-family: sans-serif;
 }
 
+/* 吹き出しラッパー */
 .message {
   display: flex;
+  justify-content: flex-start;
   margin-bottom: 1rem;
 }
 
+/* 吹き出し：ユーザーのメッセージ */
 .message.user {
   justify-content: flex-end;
 }
 
-.message.philosopher {
-  justify-content: flex-start;
-}
-
+/* 吹き出し本体 */
 .message-bubble {
-  background-color: #f1f1f1;
-  padding: 0.8rem 1rem;
+  max-width: 70%;
+  padding: 0.75rem 1rem;
   border-radius: 1rem;
-  max-width: 75%;
-  white-space: pre-wrap;
+  background-color: #f0f0f0;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* 自分の吹き出し（右） */
 .message.user .message-bubble {
-  background-color: #d0f0ff;
-  border-bottom-right-radius: 0;
+  background-color: #d1e7ff;
+  text-align: right;
 }
 
-.message.philosopher .message-bubble {
-  background-color: #fff;
-  border-bottom-left-radius: 0;
-}
-
-/* OpinionSelector用 */
+/* 意見選択UI（OpinionSelector全体） */
 .opinion-box {
-  margin-top: 2rem;
+  background-color: #fff6e5;
   padding: 1rem;
-  border-top: 1px solid #ccc;
+  margin-top: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.opinion-box h4 {
-  margin: 1rem 0 0.5rem;
-}
-
-.opinion-box textarea {
-  width: 100%;
-  padding: 0.5rem;
+/* 会話終了ボタン */
+.end-chat-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.8rem 1.2rem;
   font-size: 1rem;
-}
-
-.opinion-box button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: #333;
+  background-color: #ff7f50;
   color: white;
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 2rem;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.end-chat-button:hover {
+  background-color: #ff5f2e;
 }
