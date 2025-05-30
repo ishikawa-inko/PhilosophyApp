@@ -1,26 +1,88 @@
 /* src/pages/Home.css */
 
 .container {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('../assets/photo/home.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 3rem;
+  z-index: 0;
 }
 
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.6); /* 透明白レイヤー */
+  z-index: 1;
+}
+
+.container > * {
+  position: relative;
+  z-index: 2;
+}
+
+
 .title {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-family: 'Georgia', serif; /* 落ち着いたクラシックフォント */
+  letter-spacing: 2px;           /* 文字間を広く */
+  color: #051302;                
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* 高級感のある影 */
   margin-bottom: 2rem;
 }
 
 .subtitle {
-  color: #555;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #051302; 
+  letter-spacing: 1px;
   margin-bottom: 1rem;
 }
+
 
 .button {
   font-size: 1.2rem;
   padding: 0.75rem 2rem;
-  background-color: #222;
-  color: #fff;
-  border: none;
-  border-radius: 0.5rem;
+  background: linear-gradient(145deg, #f4e2d8, #e1c9b6); /* 大理石風のグラデ */
+  color: #3b2f2f;
+  font-weight: bold;
+  border: 2px solid #d6bfae;
+  border-radius: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
   cursor: pointer;
 }
+
+.button:hover {
+  background: linear-gradient(145deg, #e1c9b6, #f4e2d8); /* 反転 */
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5); /* 黄金の輝き */
+  transform: translateY(-2px);
+}
+
+
+.inco-wrapper {
+  
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.inco-wrapper::before {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 80px;
+  background-image: url('../assets/photo/inco.jpg'); /* Home.css からの相対パス */
+  background-size: cover;
+  background-position: center;
+}
+
