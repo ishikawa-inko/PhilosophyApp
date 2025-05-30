@@ -57,3 +57,93 @@
 .checkbox-item input {
   margin-right: 0.5rem;
 }
+
+.philosopher-image {
+  width: 80px;          /* 横幅を80pxに */
+  height: 80px;         /* 高さも揃える */
+  object-fit: cover;    /* 画像を枠にぴったり収める */
+  border-radius: 50%;   /* 丸く表示 */
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* おしゃれに */
+}
+
+.philosopher-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.philosopher-card {
+  width: 120px;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.philosopher-card:hover {
+  transform: scale(1.05);
+  border-color: #999;
+}
+
+.philosopher-card.selected {
+  border-color: #007BFF;
+  background-color: #e6f0ff;
+}
+
+.philosopher-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0.5rem auto;
+}
+
+.philosopher-name {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.philosopher-character {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.category-card {
+  width: 140px;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  border-color: #888;
+}
+
+.category-card.selected {
+  border-color: #007BFF;
+  background-color: #e6f0ff;
+}
+
+.category-name {
+  font-weight: bold;
+  font-size: 1rem;
+}

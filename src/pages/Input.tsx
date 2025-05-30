@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Input.css';
+import socratesImg from '../assets/photo/sokuratesu.png';
+import nietzscheImg from '../assets/photo/ni-tye.png';
+import kantImg from '../assets/photo/kanto.png';
+import sartreImg from '../assets/photo/sarutoru.png';
+import benthamImg from '../assets/photo/bennsamu.png';
+import epicurusImg from '../assets/photo/epikurosu.png';
+import laoziImg from '../assets/photo/rousi.png';
 
 export default function Input() {
   const navigate = useNavigate();
@@ -14,6 +21,7 @@ export default function Input() {
     "努力と目標"
   ];
 
+  
   const templates: { [key: string]: string[] } = {
     "人間関係": ["友達とうまくいかない", "教授が怖い", "みんなと仲良くなれない"],
     "将来・キャリア": ["やりたい仕事が見つからない", "将来が不安", "進路が決められない"],
@@ -49,26 +57,37 @@ export default function Input() {
 
     navigate('/chat');
   };
+const philosophers = [
+  { name: 'ソクラテス', image: socratesImg, character: 'しつこい質問おじさん' },
+  { name: 'ニーチェ', image: nietzscheImg, character: '熱血ポエマー' },
+  { name: 'カント', image: kantImg, character: 'マジメ理論マン' },
+  { name: 'サルトル', image: sartreImg, character: '重めの思想おじさん' },
+  { name: 'ベンサム', image: benthamImg, character: '幸せ陽キャ' },
+  { name: 'エピクロス', image: epicurusImg, character: '静かに生きたい系' },
+  { name: '老子', image: laoziImg, character: 'ゆる仙人' },
+];
+
 
   return (
+    
     <div className="input-container">
       <h2>あなたのお悩みは？</h2>
 
-      {/* ジャンル選択 */}
-      <div style={{ marginBottom: '1rem' }}>
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setSelectedExample(null);
-            }}
-            className={`category-button ${selectedCategory === cat ? 'selected' : ''}`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      <div className="category-list">
+  {categories.map((cat) => (
+    <div
+      key={cat}
+      className={`category-card ${selectedCategory === cat ? 'selected' : ''}`}
+      onClick={() => {
+        setSelectedCategory(cat);
+        setSelectedExample(null);
+      }}
+    >
+      <div className="category-name">{cat}</div>
+    </div>
+  ))}
+</div>
+
 
       {/* 例の表示（ラジオボタン） */}
       {selectedCategory && (
@@ -106,24 +125,28 @@ export default function Input() {
       {/* 哲学者選択欄 */}
       <h3>相談したい哲学者を最大3人まで選んでください</h3>
       <div className="philosopher-list">
-        {['ソクラテス','ニーチェ', 'カント', 'サルトル', 'ベンサム', 'エピクロス', '老子'].map((name) => (
-          <label key={name} className="checkbox-item">
-            <input
-              type="checkbox"
-              checked={selectedPhilosophers.includes(name)}
-              onChange={() => {
-                if (selectedPhilosophers.includes(name)) {
-                  setSelectedPhilosophers(selectedPhilosophers.filter(n => n !== name));
-                } else if (selectedPhilosophers.length < 3) {
-                  setSelectedPhilosophers([...selectedPhilosophers, name]);
-                }
-              }}
-              disabled={!selectedPhilosophers.includes(name) && selectedPhilosophers.length >= 3}
-            />
-            {name}
-          </label>
-        ))}
+  {philosophers.map(({ name, image, character }) => {
+    const isSelected = selectedPhilosophers.includes(name);
+
+    return (
+      <div
+        key={name}
+        className={`philosopher-card ${isSelected ? 'selected' : ''}`}
+        onClick={() => {
+          if (isSelected) {
+            setSelectedPhilosophers(selectedPhilosophers.filter(n => n !== name));
+          } else if (selectedPhilosophers.length < 3) {
+            setSelectedPhilosophers([...selectedPhilosophers, name]);
+          }
+        }}
+      >
+        <div className="philosopher-name">{name}</div>
+        <img src={image} alt={name} className="philosopher-image" />
+        <div className="philosopher-character">{character}</div>
       </div>
+    );
+  })}
+</div>
 
       {/* 送信ボタン */}
       <div style={{ textAlign: 'right' }}>
