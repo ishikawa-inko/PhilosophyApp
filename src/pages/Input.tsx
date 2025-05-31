@@ -71,7 +71,7 @@ const philosophers = [
   return (
     
     <div className="input-container">
-      <h2>あなたのお悩みは？</h2>
+      <h2>君のお悩みは？</h2>
 
       <div className="category-list">
   {categories.map((cat) => (
@@ -92,7 +92,7 @@ const philosophers = [
       {/* 例の表示（ラジオボタン） */}
       {selectedCategory && (
         <div className="examples">
-          <h4>例（1つ選んでください）:</h4>
+          <h4>例（1つ選んでみよう）:</h4>
           {templates[selectedCategory]?.map((example, idx) => (
             <div key={idx}>
               <label>
@@ -112,7 +112,7 @@ const philosophers = [
 
       {/* 自由入力欄 */}
       <div style={{ marginBottom: '1rem' }}>
-        <h4>もっと詳しく書きたい方はこちら（任意）:</h4>
+        <h4>もっと詳しく教えて！（任意）:</h4>
         <textarea
           rows={4}
           value={customInput}
@@ -123,7 +123,7 @@ const philosophers = [
       </div>
 
       {/* 哲学者選択欄 */}
-      <h3>相談したい哲学者を最大3人まで選んでください</h3>
+      <h3>気になる哲学者を最大3人まで選んでね！</h3>
       <div className="philosopher-list">
   {philosophers.map(({ name, image, character }) => {
     const isSelected = selectedPhilosophers.includes(name);
@@ -147,16 +147,16 @@ const philosophers = [
     );
   })}
 </div>
+{/* 送信ボタン */}
+<div>
+  <button
+    onClick={handleSubmit}
+    className="submit-button"
+  >
+    会話を始める
+  </button>
+</div>
 
-      {/* 送信ボタン */}
-      <div style={{ textAlign: 'right' }}>
-        <button
-          onClick={handleSubmit}
-          className="submit-button"
-        >
-          会話を始める
-        </button>
-      </div>
     </div>
   );
 }

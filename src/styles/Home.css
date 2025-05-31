@@ -14,13 +14,6 @@
   z-index: 0;
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.6); /* 透明白レイヤー */
-  z-index: 1;
-}
 
 .container > * {
   position: relative;
@@ -86,3 +79,62 @@
   background-position: center;
 }
 
+.inco-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  z-index: 10; /* ←重要！ */
+}
+
+
+.inco-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.inco-speech {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 2rem; /* 丸みを強調！ */
+  padding: 1rem 1.5rem;
+  max-width: 320px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'Cinzel', serif;
+  color: #333;
+  position: relative;
+}
+
+/* 丸い吹き出しのしっぽ（三角より楕円っぽい） */
+.inco-speech::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: -20px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: -1;
+}
+
+
+.inco-speech::after {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 24px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 18px solid #ffffff;
+}
