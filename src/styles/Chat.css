@@ -1,4 +1,4 @@
-/* チャット画面全体 */
+/* チャット全体 */
 .chat-container {
   max-width: 700px;
   margin: 0 auto;
@@ -6,41 +6,90 @@
   font-family: sans-serif;
 }
 
-/* 吹き出しラッパー */
+/* 各メッセージ共通 */
 .message {
   display: flex;
-  justify-content: flex-start;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 
-/* 吹き出し：ユーザーのメッセージ */
+/* 哲学者メッセージ */
+.message.philosopher {
+  flex-direction: row;
+}
+
+/* ユーザーメッセージ */
 .message.user {
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
 }
 
-/* 吹き出し本体 */
+/* ユーザー名（右寄せ） */
+.user-name {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* 吹き出し＋アイコン横並び */
+.message-user-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* 吹き出し */
 .message-bubble {
-  max-width: 70%;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
   background-color: #f0f0f0;
   line-height: 1.4;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  word-break: break-word;
+  max-width: 70%;
 }
 
-/* 自分の吹き出し（右） */
+/* ユーザーの吹き出し色 */
 .message.user .message-bubble {
   background-color: #d1e7ff;
-  text-align: right;
+  text-align: left;
 }
 
-/* 意見選択UI（OpinionSelector全体） */
-.opinion-box {
-  background-color: #fff6e5;
-  padding: 1rem;
-  margin-top: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* ユーザーのアイコン */
+.message-user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 哲学者アイコン */
+.icon-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+
+/* 哲学者用のテキストコンテナ */
+.message-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+/* 哲学者の名前 */
+.message-name {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.25rem;
 }
 
 /* 会話終了ボタン */

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OpinionSelector from '@/components/OpinionSelector';
 import { usePhilosopherChat } from '@/hooks/usePhilosopherChat';
+import { philosopherIcons } from '@/data/philosopherIcons';
 import '../styles/Chat.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +21,7 @@ export default function Chat() {
     setSelectedPhilosopher(selected);
     localStorage.setItem('finalPhilosopher', selected);
 
-    const response = responses.find(r => r.name === selected);
+    const response = responses.find((r) => r.name === selected);
     if (response) {
       localStorage.setItem('finalAdviceText', response.text);
 
@@ -70,14 +71,41 @@ ${response.text}
       <h2>哲学チャットルーム</h2>
 
       <div>
-        {chatLog.map((msg, idx) => (
-          <div key={idx} className={`message ${msg.sender === 'user' ? 'user' : 'philosopher'}`}>
-            <div className="message-bubble">
-              <strong>{msg.sender === 'user' ? 'あなた' : msg.sender}：</strong><br />
-              {msg.text}
+        {chatLog.map((msg, idx) => {
+          const isUser = msg.sender === 'user';
+
+          return (
+            <div key={idx} className={`message ${isUser ? 'user' : 'philosopher'}`}>
+              {isUser ? (
+                <>
+                  <div className="message-name user-name">あなた</div>
+                  <div className="message-user-wrapper">
+                    <div className="message-bubble">{msg.text}</div>
+                    <img
+                      src={philosopherIcons['user'] || ''}
+                      alt="user icon"
+                      className="message-user-icon"
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <img
+                    src={philosopherIcons[msg.sender] || ''}
+                    alt="icon"
+                    className="icon-image"
+                  />
+                  <div className="message-content">
+                    <div className="message-name">
+                      <strong>{msg.sender}</strong>
+                    </div>
+                    <div className="message-bubble">{msg.text}</div>
+                  </div>
+                </>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {loading && <p>考え中...</p>}

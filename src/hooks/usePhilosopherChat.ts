@@ -86,8 +86,8 @@ export function usePhilosopherChat() {
     setLoopCount(prev => prev + 1);
 
     setChatLog(prev => [...prev, {
-      sender: 'あなた',
-      text: `【${loopCount}回目】私は「${selected}」の意見に共感しました。\n自分の考え：${comment}`
+      sender: 'user',
+      text: `【「${selected}」の意見に共感しました。】\n${comment}`
     }]);
 
     localStorage.setItem('finalPhilosopher', selected); // ← Answer.tsx用
