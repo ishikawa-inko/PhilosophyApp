@@ -11,12 +11,17 @@ export default function Home() {
         悩みを入力
       </button>
 
-      {/* モデレーターインコ */}
-      <div className="inco-wrapper">
-        <img src={birdImage} alt="司会インコ" className="inco-image" />
-        <div className="inco-speech">ようこそ、悩める魂よ！</div>
-      </div>
+{/* モデレーター テツピヨ */}
+<div className="inco-wrapper">
+  <div className="inco-name">テツピヨ</div>
+  <div className="inco-row">
+    <img src={birdImage} alt="テツピヨ" className="inco-image" />
+    <div className="inco-speech">
+      ぼくはテツピヨ、哲学の世界へようこそ！
     </div>
+  </div>
+    </div> 
+    </div>
+
   );
 }
-

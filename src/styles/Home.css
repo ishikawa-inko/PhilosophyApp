@@ -78,15 +78,14 @@
   background-size: cover;
   background-position: center;
 }
-
 .inco-wrapper {
   position: fixed;
   bottom: 20px;
   left: 20px;
+  z-index: 10;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
-  z-index: 10; /* ←重要！ */
 }
 
 
@@ -137,4 +136,20 @@
   border-top: 11px solid transparent;
   border-bottom: 11px solid transparent;
   border-right: 18px solid #ffffff;
+}
+
+/* テツピヨの名前 */
+.inco-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.5rem;
+  color: #333;
+}
+
+/* 画像と吹き出しを横並びに */
+.inco-row {
+  display: flex;
+  align-items: flex-end; /* 下揃えすると見た目が自然 */
+  gap: 0.5rem;
 }

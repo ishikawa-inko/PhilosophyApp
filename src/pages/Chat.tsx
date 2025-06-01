@@ -73,6 +73,7 @@ ${response.text}
       <div>
         {chatLog.map((msg, idx) => {
           const isUser = msg.sender === 'user';
+          const isBird = msg.sender === '鳥';
 
           return (
             <div key={idx} className={`message ${isUser ? 'user' : 'philosopher'}`}>
@@ -97,7 +98,7 @@ ${response.text}
                   />
                   <div className="message-content">
                     <div className="message-name">
-                      <strong>{msg.sender}</strong>
+                      <strong>{isBird ? 'テツピヨ' : msg.sender}</strong>
                     </div>
                     <div className="message-bubble">{msg.text}</div>
                   </div>
