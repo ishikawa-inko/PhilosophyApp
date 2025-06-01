@@ -1,31 +1,67 @@
 .answer-container {
   text-align: center;
   padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Segoe UI', sans-serif;
+  color: #2f2f2f;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
 }
 
-.philosopher-card {
-  background-color: #f9f9f9;
-  border-radius: 1rem;
-  padding: 2rem;
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.philosopher-block {
   margin-top: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.philosopher-name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.philosopher-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 0.8rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .advice-text {
   font-size: 1.2rem;
   font-style: italic;
-  margin-top: 1rem;
+  color: #555;
 }
 
 .solution-box {
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: #f0f8ff;
-  border-left: 5px solid #007acc;
-  border-radius: 0.5rem;
+  margin-top: 3rem;
+  background-color: #f8faff;
+  border-left: 4px solid #007acc;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.solution-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: #007acc;
 }
 
 .solution-text {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bold;
+  color: #004c85;
 }
