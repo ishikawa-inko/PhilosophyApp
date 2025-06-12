@@ -1,4 +1,4 @@
-#哲学の部屋
+# 哲学の部屋
 複数人の哲学者にお悩みを相談し、解決案まで提案してくれるアプリ。
 
 ![スクリーンショット 2025-06-12 162957](https://github.com/user-attachments/assets/86dbbb58-dc4c-4ccd-8117-cac672ecd95a)
