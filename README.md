@@ -1,3 +1,38 @@
+#哲学の部屋
+複数人の哲学者にお悩みを相談し、解決案まで提案してくれるアプリ。
+
+![スクリーンショット 2025-06-12 162957](https://github.com/user-attachments/assets/86dbbb58-dc4c-4ccd-8117-cac672ecd95a)
+
+![スクリーンショット 2025-06-12 163151](https://github.com/user-attachments/assets/4b59534e-f9f6-4009-bcbc-db695a8f9f8a)
+
+![スクリーンショット 2025-06-12 163202](https://github.com/user-attachments/assets/7a5e2b30-8e47-4dba-b5da-8da5a27c494d)
+
+
+![スクリーンショット 2025-06-12 163236](https://github.com/user-attachments/assets/20ac4bfc-8459-43ab-9156-2933c1984905)
+
+
+![スクリーンショット 2025-06-12 163253](https://github.com/user-attachments/assets/a79d1e1d-fe27-491f-a14a-e8d733e9a243)
+
+
+![Uploading スクリーンショット 2025-06-12 163301.png…]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ts-react-template
 
 React + TypeScript + Vite を使用した開発のためのテンプレートリポジトリです。すぐに開発を始められるように必要な設定が整っています。
